@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="grass.rf.gd mạng lưới máy chủ hàng đầu việt nam. Đa năng, toàn diện và hoàn toàn miễn phí">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="./img/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="152x152" href="./img/apple-touch-icon-152x152-precomposed.png" />
+</head>
+<body>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    #outer{
+        border: 1px solid red;
+        display: flex;
+        height: 99.8vh;
+    }
+    #outer div{
+        border: 1px solid black;
+        width: 30%;
+        height: 35%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 200%;
+        border-radius: 50px;
+    }
+    #outer div:hover{
+        background: tomato;
+        cursor: pointer;
+        font-weight: bold;
+        color: white;
+    }
+
+    #admin input{
+        display: none;
+        border: none;
+        outline: none;
+        color: navy;
+        border-radius: 7px;
+        padding: 10px;
+        width: 82%;
+    }
+</style>
+<div id="outer">
+    <div id="client">
+        Người qua đường
+    </div>
+    <div id="admin">
+        <span>Admin</span>
+        <input type="text" id="admin-pw" placeholder="Nhập mật khẩu bí mật">
+    </div>
+</div>
+<style>
+    #who{
+        position: fixed;
+        top: 24%;
+        width: 100%;
+        text-align: center;
+    }
+    #who h1{
+        font-size: 350%;
+    }
+</style>
+<div id="who">
+    <h1>Ai đó <i class="fa fa-question"></i></h1>
+</div>
+<script>
+$(document).ready(function(){
+    $("#client").click(function(){
+        window.location.href = "./index2.php";
+    });
+    $("#admin").mouseenter(function(){
+        $(this).children("span").hide();
+        $(this).children("input").show();
+        $(this).children("input").focus();
+    });
+    $("#admin").mouseleave(function(){
+        $(this).children("input").hide();
+        $(this).children("span").show();
+    });
+    $("input").keyup(function(){
+        var getpw = $(this).val();
+        if( getpw === "087663az")
+        {
+            window.location.href = "./admin.php";
+        }
+    });
+});
+</script>
+</body>
+</html>

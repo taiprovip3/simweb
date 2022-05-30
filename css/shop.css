@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/*nav*/
+#nav{
+    display: flex;
+    border: 2px solid green;
+}
+#nav > ul{
+    border: 1px solid purple;
+    padding: 10px;
+    list-style-type: none;
+    width: 100%;
+}
+#nav > ul > li{
+    display: none;
+}
+#nav > ul:hover{
+    font-size: larger;
+}
+/*head*/
+#head > h1{
+    font-weight: 900;
+}
+span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    font-size: 150%;
+    color: white;
+  }
+#boxFa{
+    #border: 1px solid blue;
+    display: flex;
+    flex-wrap: nowrap;
+}
+#box{
+    text-align: center;
+    width: 30%;
+    padding: 120px;
+    margin: 0 auto;
+    background-color: seagreen;
+}
