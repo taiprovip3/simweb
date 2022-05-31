@@ -52,6 +52,13 @@ button, input, textarea{
     margin: 8px;
     padding: 25px;
 }
+#menu a{
+    color: blue;
+    text-decoration: underline;
+}
+#menu a:hover{
+    cursor: pointer;
+}
 /* rating_container */
 #rating_container{
     display: table;
@@ -67,13 +74,13 @@ button, input, textarea{
 #rating_div > a:hover{
     cursor: pointer;
 }
-/* object */
+/* object
 #object{
     display: flex;
     width: 100%;
 
 }
-/* #object > div{
+ #object > div{
     border-radius: 50%;
     font-size: x-large;
     width: 20%;
@@ -107,6 +114,11 @@ button, input, textarea{
     margin: 5px;
     display: flex;
     line-height: 1.2em;
+}
+/* comment */
+#content-box{
+    width: 100%;
+    font-size: larger;
 }
 /*Snow animation*/
 /* .snow{

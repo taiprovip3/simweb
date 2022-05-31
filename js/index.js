@@ -9,7 +9,9 @@ $(document).ready(function(){
         var getLen = $("*").scrollTop();
         if(getLen >= 1000){
             $("#iPerson").css("color","unset");
+            $("#scrollTop").show();
         }else{
+            $("#scrollTop").hide();
             $("#iPerson").css("color","white");
         }
     });
@@ -191,5 +193,21 @@ $(document).ready(function(){
             $("#rate").show();
         }, 20000);
     });
+
+    //click cuộn lên/xuống
+    $("#menu").children().children("a").click(function(){
+        var x = $(this).attr('id');
+        var elementScrollTo = x.substring(8); //go-down-info
+        $('html, body').animate({
+            scrollTop: $("#"+elementScrollTo+"").offset().top
+        }, 1000);
+    });
+    $("#scrollTop").click(function(){
+        $('html, body').animate({
+            scrollTop: $("#outer").offset().top
+        }, 1000);
+    });
+
+
 
 });

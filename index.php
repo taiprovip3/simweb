@@ -1,6 +1,7 @@
 
 <?php
     session_start();
+    include_once './db/database.php';
     include './process/get_data_header.php';
 ?>
 <!DOCTYPE html>
@@ -12,9 +13,9 @@
     <title>nhinguyen.rf.gd - trang chủ - cửa hàng files - cửa hàng plugins - website miễn phí - server minecraft tại việt nam</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/ad778f42b3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/index.css?" type="text/css">
+    <link rel="stylesheet" href="./css/index.css?i=1" type="text/css">
     <link href="./img/favicon.ico" rel="icon" type="image/x-icon" />
 </head>
 <body>
@@ -56,7 +57,7 @@
                             <a class="nav-link active" href="#">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Phúc lợi</a>
+                            <a class="nav-link" href="./file/phucloi.php">Phúc lợi</a>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Cửa hàng</a>
                         </li>
@@ -77,27 +78,27 @@
                     <div>
                         <h3>Giới thiệu</h3>
                         <p>Lịch sử ra đời & hình thành của nhinguyen.rf.gd và công dụng của website ra đời.</p>
-                        <a href="#">Kéo xuống></a>
+                        <a id="go-down-info">Cuộn xuống></a>
                     </div>
-                    <div>
+                    <!-- <div>
                         <h3>Tool quản lý</h3>
                         <p>Cho phép quản lý dữ liệu người dùng và dữ liệu, do admin hoặc staff sử dụng.</p>
-                        <a href="#">Kéo xuống></a>
-                    </div>
+                        <a id="go-down-manager">Cuộn xuống></a>
+                    </div> -->
                     <div>
                         <h3>Trợ giúp</h3>
                         <p>Hướng dẫn bạn một vài tính năng khó hiểu hoặc diễn tả chi tiết một đặc trưng, chỉ dẫn nào đó.</p>
-                        <a href="#">Kéo xuống></a>
+                        <a id="go-down-help">Cuộn xuống></a>
                     </div>
                     <div>
                         <h3>Hỗ trợ</h3>
                         <p>Liên lạc nhà phát triển trực tiếp để sử lý vấn đề đang gặp phải nhanh nhất trành mất thời gian tìm hiểu.</p>
-                        <a href="#">Kéo xuống></a>
+                        <a id="go-down-support">Cuộn xuống></a>
                     </div>
                     <div>
                         <h3>Bình luận</h3>
                         <p>Thăm dò một vài ý kiến cá nhân của bạn bè cùng lứa và hỗ trợ nhau hỏi đáp hoặc đưa ra ý kiến.</p>
-                        <a href="#">Kéo xuống></a>
+                        <a id="go-down-comment">Cuộn xuống></a>
                     </div>
                     <div id="rating_container">
                         <div class="text-center" id="rating_div">
@@ -115,7 +116,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 mt-1 container">
+        <div class="col-lg-12 mt-1 container" id="info">
             <div class="row">
                 <div class="col-lg-12 border bg-success text-white text-center">
                     <h3>GIỚI THIỆU</h3>
@@ -183,7 +184,7 @@
         </div>
     </div> -->
     <div class="row">
-        <div class="col-lg-12 mt-1 container">
+        <div class="col-lg-12 mt-1 container" id="help">
             <div class="row">
                 <div class="col-lg-12 border bg-success text-white text-center">
                     <h3>TRỢ GIÚP / FAQ / Q&A</h3>
@@ -245,7 +246,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 mt-1 container">
+        <div class="col-lg-12 mt-1 container" id="support">
             <div class="row">
                 <div class="col-lg-12 border bg-success text-white text-center">
                     <h3>HỖ TRỢ / LIÊN HỆ</h3>
@@ -272,7 +273,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 mt-1 container">
+        <div class="col-lg-12 mt-1 container" id="comment">
             <div class="row">
                 <div class="col-lg-12 border bg-success text-white text-center">
                     <h3>BÌNH LUẬN</h3>
@@ -280,28 +281,18 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-lg-12 mt-3 mb-3">
+                    <form method="post">
+                    <textarea maxlength="255" class="border p-3" name="content-box" id="content-box" rows="5" placeholder="Viết lên suy nghĩ của bạn..." required></textarea>
+                    <input type="submit" value="Đăng tải" class="btn btn-outline-primary btn-lg" name="comment">
+                    <?php include './process/comment.php'; ?>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-12">
                     <div>
-                        <div id="cmt">
-                            <div>
-                                <img src="./img/user.png" class="rounded-circle" width="100px">
-                            </div>
-                            <div>
-                                <p>23/05/2022 ; 8:25 AM</p>
-                                <p><i>Mọi công dân đều có quyền tự do ngôn luận.</i></p>
-                                <a href="#">Phản hồi</a>
-                            </div>
-                        </div>
-                        <div id="cmt">
-                            <div>
-                                <img src="./img/user.png" class="rounded-circle" width="100px">
-                            </div>
-                            <div>
-                                <p>23/05/2022 ; 8:25 AM</p>
-                                <p><i>Mọi công dân đều có quyền tự do ngôn luận.</i></p>
-                                <a href="#">Phản hồi</a>
-                            </div>
-                        </div>
+                        <?php include './process/get_comment.php'; ?>
                     </div>
                 </div>
             </div>
@@ -472,6 +463,27 @@
     <i class="far fa-star fa-5x" id="star4"></i>
     <i class="far fa-star fa-5x" id="star5"></i>
 </div>
+<!-- scroll TOP {fixed} -->
+<style>
+    #scrollTop{
+        display: none;
+        position: fixed;
+        right: -8px;
+        bottom: 0;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        margin: -10px;
+    }
+    #scrollTop:hover{
+        cursor: pointer;
+        opacity: 0.8;
+        background: lightgrey;
+        color: green;
+    }
+</style>
+<div id="scrollTop">
+    <i class="fab fa-autoprefixer fa-2x"></i>
+</div>
 <!-- Snow animation -->
     <!-- <div class="snow">
         <i class="fa-solid fa-snowflake"></i>
@@ -596,6 +608,7 @@
     <div class="snow" id="snow41">
         <i class="fa-solid fa-snowflake"></i>
     </div> -->
-<script src="./js/index.js"></script>
+<script src="./js/index.js?i=1" type="text/javascript"></script>
+<?php if(is_resource($conn)) mysqli_close($conn); ?>
 </body>
 </html>

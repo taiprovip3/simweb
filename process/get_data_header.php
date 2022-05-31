@@ -1,6 +1,4 @@
 <?php
-    include './db/database.php';
-
     //update view +1
     $ip_address = gethostbyname("www.google.com");
     $sql = "select * from visitors where ip = '$ip_address'";
