@@ -1,9 +1,7 @@
 
 <?php
     session_start();
-    include './util/method.php';
     include './process/get_data_header.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
@@ -16,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/ad778f42b3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/index.css?i=1">
+    <link rel="stylesheet" href="./css/index.css?" type="text/css">
     <link href="./img/favicon.ico" rel="icon" type="image/x-icon" />
 </head>
 <body>
@@ -30,15 +28,15 @@
             <div id="intro">
                 <div>
                     <img src="./img/headMember.png" alt="thanhvien" width="30%" class="img-circle">
-                    <p><span id="intro-span">350</span> thành viên</p>
+                    <p><span id="intro-span"><?php echo $members; ?></span> thành viên</p>
                 </div>
                 <div>
                     <img src="./img/star.png" alt="thanhvien" width="30%" class="img-circle">
-                    <p>Chất lượng: <span id="intro-span">5<i class="fa fa-star" style="color: yellow;"></i></span> (6 lượt vote)</p>
+                    <p>Chất lượng: <span id="intro-span"><?php echo $avg_stars; ?><i class="fa fa-star" style="color: yellow;"></i></span> (6 lượt vote)</p>
                 </div>
                 <div>
                     <img src="./img/views.png" alt="thanhvien" width="30%" class="img-circle">
-                    <p>Lượt ghé webite: <span id="intro-span">956</span></p>
+                    <p>Lượt ghé webite: <span id="intro-span"><?php echo $views;?></span></p>
                 </div>
             </div>  
         </div>
@@ -100,6 +98,17 @@
                         <h3>Bình luận</h3>
                         <p>Thăm dò một vài ý kiến cá nhân của bạn bè cùng lứa và hỗ trợ nhau hỏi đáp hoặc đưa ra ý kiến.</p>
                         <a href="#">Kéo xuống></a>
+                    </div>
+                    <div id="rating_container">
+                        <div class="text-center" id="rating_div">
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <br>
+                            <a id="rate" class="text-danger">Bình chọn</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -424,6 +433,44 @@
 </style>
 <div class="alert alert-success" id="announcer">
     <strong>Success!</strong> Đăng ký tài khoản thành công.
+</div>
+<!-- rating box {fixed} -->
+<style>
+    #rating-box{
+        display: none;
+
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+
+        border-radius: 10px;
+    }
+    #rating-close{
+        position: absolute;
+        right: -10px;
+        top: 0;
+        width: 10%;
+    }
+    #rating-box i:hover{
+        cursor: pointer;
+    }
+    #rating-box i{
+        margin: 5px;
+        padding: 5px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+</style>
+<div class="bg-success text-warning text-center p-3" id="rating-box">
+    <div id="rating-close">
+        <i class="fas fa-times" id="rating-close-i"></i>
+    </div>
+    <i class="far fa-star fa-5x" id="star1"></i>
+    <i class="far fa-star fa-5x" id="star2"></i>
+    <i class="far fa-star fa-5x" id="star3"></i>
+    <i class="far fa-star fa-5x" id="star4"></i>
+    <i class="far fa-star fa-5x" id="star5"></i>
 </div>
 <!-- Snow animation -->
     <!-- <div class="snow">

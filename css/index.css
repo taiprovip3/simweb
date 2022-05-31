@@ -52,6 +52,21 @@ button, input, textarea{
     margin: 8px;
     padding: 25px;
 }
+/* rating_container */
+#rating_container{
+    display: table;
+    width:100%;
+}
+#rating_div{
+    display: table-cell;
+    vertical-align: middle;
+}
+#rating_div > i{
+    color: rgb(55, 224, 92);
+}
+#rating_div > a:hover{
+    cursor: pointer;
+}
 /* object */
 #object{
     display: flex;

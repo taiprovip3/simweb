@@ -128,4 +128,68 @@ $(document).ready(function(){
             }
         }
     });
+
+    //rating hover
+    $("#star1").hover(function(){
+        $(this).attr('class', 'fas fa-star fa-5x');
+        $("#star2").attr('class', 'far fa-star fa-5x');
+        $("#star3").attr('class', 'far fa-star fa-5x');
+        $("#star4").attr('class', 'far fa-star fa-5x');
+        $("#star5").attr('class', 'far fa-star fa-5x');
+    });
+    $("#star2").hover(function(){
+        $(this).attr('class', 'fas fa-star fa-5x');
+        $("#star1").attr('class', 'fas fa-star fa-5x');
+        $("#star3").attr('class', 'far fa-star fa-5x');
+        $("#star4").attr('class', 'far fa-star fa-5x');
+        $("#star5").attr('class', 'far fa-star fa-5x');
+    });
+    $("#star3").hover(function(){
+        $(this).attr('class', 'fas fa-star fa-5x');
+        $("#star1").attr('class', 'fas fa-star fa-5x');
+        $("#star2").attr('class', 'fas fa-star fa-5x');
+        $("#star4").attr('class', 'far fa-star fa-5x');
+        $("#star5").attr('class', 'far fa-star fa-5x');
+    });
+    $("#star4").hover(function(){
+        $(this).attr('class', 'fas fa-star fa-5x');
+        $("#star1").attr('class', 'fas fa-star fa-5x');
+        $("#star2").attr('class', 'fas fa-star fa-5x');
+        $("#star3").attr('class', 'fas fa-star fa-5x');
+        $("#star5").attr('class', 'far fa-star fa-5x');
+    });
+    $("#star5").hover(function(){
+        $(this).attr('class', 'fas fa-star fa-5x');
+        $("#star1").attr('class', 'fas fa-star fa-5x');
+        $("#star2").attr('class', 'fas fa-star fa-5x');
+        $("#star3").attr('class', 'fas fa-star fa-5x');
+        $("#star4").attr('class', 'fas fa-star fa-5x');
+    });
+
+    //rating click
+    $("#rate").click(function(){
+        $("#rating-box").show();
+    });
+    $("#rating-close-i").click(function(){
+        $(this).parent().parent().hide();
+    });
+    $("#rating-box").children("i").click(function(){
+        var temp_star = $(this).attr('id');
+        var star_rated = temp_star.substring(4);
+        $.ajax({
+            type: "POST",
+            url: "./process/rate.php",
+            data: {star: star_rated},
+            datatype: 'html',
+            success: function(result){
+                alert(result);
+            }
+        });
+        $("#rate").hide();
+        $("#rating-box").hide();
+        setTimeout(() => {
+            $("#rate").show();
+        }, 20000);
+    });
+
 });
