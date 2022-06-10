@@ -608,7 +608,7 @@
     <div class="snow" id="snow41">
         <i class="fa-solid fa-snowflake"></i>
     </div> -->
-<script src="./js/index.js?i=1" type="text/javascript"></script>
+<script src="./js/index.js" type="text/javascript"></script>
 <?php if(is_resource($conn)) mysqli_close($conn); ?>
 </body>
 </html>

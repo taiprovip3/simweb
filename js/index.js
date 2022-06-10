@@ -87,27 +87,28 @@ $(document).ready(function(){
             data: $(this).serialize(),
             datatype: 'html',
             success: function(result){
-                if(result === "409"){
-                    $("#announcer").attr('class', 'alert alert-danger');
-                    $("#announcer").html("<strong>Lỗi!</strong> Tài khoản đã có người sử dụng.");
-                    $("#announcer").show().fadeOut(7000);
-                }else {
-                    if(result === "200"){
-                        $("#announcer").attr('class', 'alert alert-success');
-                        $("#announcer").html("Đăng ký tài khoản thành công <strong><i class='fas fa-check-circle'></i></strong>");
-                        $("#announcer").show().fadeOut(7000);
-                        var email = $("#regisForm").find("input[id='email']").val();
-                        $("#regisForm").hide();
-                        $("#loginForm").show();
-                        $("#loginForm").find("input[type='email']").val(email);
-                        $("#loginForm").find("input[type='password']").focus();
-                    }
-                    if(result === "404"){
-                        $("#announcer").attr('class', 'alert alert-danger');
-                        $("#announcer").html("<strong>Lỗi!</strong> Đã xảy ra lỗi không xác định.");
-                        $("#announcer").show().fadeOut(7000);
-                    }
-                }
+                alert(result);
+                // if(result === "409"){
+                //     $("#announcer").attr('class', 'alert alert-danger');
+                //     $("#announcer").html("<strong>Lỗi!</strong> Tài khoản đã có người sử dụng.");
+                //     $("#announcer").show().fadeOut(7000);
+                // }else {
+                //     if(result === "200"){
+                //         $("#announcer").attr('class', 'alert alert-success');
+                //         $("#announcer").html("Đăng ký tài khoản thành công <strong><i class='fas fa-check-circle'></i></strong>");
+                //         $("#announcer").show().fadeOut(7000);
+                //         var email = $("#regisForm").find("input[id='email']").val();
+                //         $("#regisForm").hide();
+                //         $("#loginForm").show();
+                //         $("#loginForm").find("input[type='email']").val(email);
+                //         $("#loginForm").find("input[type='password']").focus();
+                //     }
+                //     if(result === "404"){
+                //         $("#announcer").attr('class', 'alert alert-danger');
+                //         $("#announcer").html("<strong>Lỗi!</strong> Đã xảy ra lỗi không xác định.");
+                //         $("#announcer").show().fadeOut(7000);
+                //     }
+                // }
             }
         });
     });

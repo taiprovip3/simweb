@@ -10,8 +10,10 @@
             if($row["status"] == 1){
                 if(password_verify($password,$row["password"])){
                     $_SESSION['email'] = $email;
+                    mysqli_query($conn,"insert into logs (action,status,email) values ('Login to web','success','$email')");
                     echo "<meta http-equiv=\"refresh\" content=\"0;URL=./index.php\">";
                 } else{
+                    mysqli_query($conn,"insert into logs (action,status,email) values ('Login to web','failed cause wrong password','$email')");
                     echo '
                     <script>
                     jQuery(document).ready(function(){
@@ -21,6 +23,7 @@
                     ';
                 }
             } else{
+                mysqli_query($conn,"insert into logs (action,status,email) values ('Login to web','failed cause not verified','$email')");
                 echo '
                     <script>
                     jQuery(document).ready(function(){
@@ -30,6 +33,7 @@
                     ';
             }
         } else{
+            mysqli_query($conn,"insert into logs (action,status,email) values ('Login to web','failed cause no existed account','$email')");
             echo '
                 <script>
                 jQuery(document).ready(function(){
@@ -38,6 +42,5 @@
                 </script>
             ';
         }
-        $conn->close();
     }
 ?>

@@ -93,12 +93,12 @@
                     <div>
                         <h3>Điểm danh</h3>
                         <p>Nhận token miễn phí bằng cách điểm danh hằng ngày.</p>
-                        <a id="go-down-help">Cuộn xuống></a>
+                        <a id="go-down-muster">Cuộn xuống></a>
                     </div>
                     <div>
                         <h3>Nhập code</h3>
                         <p>Các ngày lễ lớn thường có giftcode đặc biệt tri ân các thành viên.</p>
-                        <a id="go-down-support">Cuộn xuống></a>
+                        <a id="go-down-code">Cuộn xuống></a>
                     </div>
                 </div>
             </div>
@@ -207,6 +207,36 @@
         </div>
     </div>
 </div>
+<!-- iPerson {fixed} -->
+<style>
+    #iPerson{
+        position: fixed;
+        right: 0;
+        top: 0;
+        border-radius: 15px;
+    }
+    #iPerson:hover{
+        cursor: pointer;
+        opacity: 0.5;
+        background: lightslategrey;
+    }
+</style>
+<div class="border text-center p-3" id="iPerson">
+    <?php
+        if(isset($_SESSION['email'])){
+            echo '
+            <i class="fas fa-user-check fa-2x"></i><br>
+            <a href="#">Túi cá nhân</a>
+            <p id="logged">'.$_SESSION['email'].', <a href="../process/logout.php">logout</span></a>
+            ';
+        } else{
+            echo '
+            <i class="fas fa-user-secret"></i>
+            <p id="anonymous">Anonymous, <a href="../index.php">login</a></p>
+            ';
+        }
+    ?>
+</div>
 <script>
 $(document).ready(function(){
     $("#let-muster").click(function(){
@@ -218,6 +248,15 @@ $(document).ready(function(){
                 alert(result)
             }
         });
+    });
+
+    //click cuộn lên/xuống
+    $("#menu").children().children("a").click(function(){
+        var x = $(this).attr('id');
+        var elementScrollTo = x.substring(8); //go-down-info
+        $('html, body').animate({
+            scrollTop: $("#"+elementScrollTo+"").offset().top
+        }, 1000);
     });
 });
 </script>

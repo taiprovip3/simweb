@@ -1,6 +1,4 @@
 <?php
-    include './db/database.php';
-
     $sql = "select * from comments";
     $result = mysqli_query($conn, $sql);
     $json = mysqli_fetch_all ($result, MYSQLI_ASSOC);
@@ -27,6 +25,4 @@
         </div>
         ';
     }
-
-    $conn->close();
 ?>

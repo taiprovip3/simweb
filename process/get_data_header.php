@@ -40,5 +40,4 @@
         $row = mysqli_fetch_array($result);
         $members = $row[0];
     }
-    $conn->close();
 ?>

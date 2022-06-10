@@ -13,15 +13,13 @@
         if(mysqli_num_rows($result) > 0){
             echo '409';
         } else{
-            $id = rand(0,1000);
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $user = new user($id, $email, $password);
             $authen_token = md5($email.rand(10,9999));
 
-            $sql = "insert into users values ('$id','$email', '$password','$authen_token',0);";
-            $sql .= "insert into user_info (user_id) values ('$id');";
-            $sql .= "insert into user_balance (token,credit,user_id) values (0,0,'$id');";
-            $sql .= "insert into logs (action, status, user_id) values ('Register account','verifying','$id')";
+            $sql = "insert into users (email,password,authen_token,status) values ('$email', '$password','$authen_token',0);";
+            $sql .= "insert into infos (email) values ('$email');";
+            $sql .= "insert into balances (token,credit,email) values (0,0,'$email');";
+            $sql .= "insert into logs (action, status, email) values ('Register account','verifying','$email')";
             if(mysqli_multi_query($conn, $sql)){
 
                 include_once '../lib/class.phpmailer.php';
@@ -34,14 +32,15 @@
                 $nTo = "Anonymous";
                 $mTo = $email;
                 $mail = sendMail($title, $content, $nTo, $mTo, $diachicc='');
-                if($mail==1)
-                    echo '200';
-                else 
-                    echo '404';
+                if($mail==1){
+                    echo "GỬI MAIL THÀNH CÔNG";
+                }
+                else{
+                    echo "GỬI MAIL THẤT BẠI";
+                }
             } else{
-                echo '404';
+                echo 'KO THỰC HIỆN THÀNh CÔNG MULTI QUERY';
             }
         }
     }
-    $conn->close();
 ?>
